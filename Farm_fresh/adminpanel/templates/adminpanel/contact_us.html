@@ -1,0 +1,314 @@
+{% extends 'adminpanel/base.html' %}
+{% block content %}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Contact Us</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Contact Us</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog"
+     tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Data</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="#" method="POST" id="contactform">
+                    {% csrf_token %}
+                    <label for="Address">Address</label>
+                    <input class="form-control" id="Address" name="Address" placeholder="Address" type="text">
+
+
+                    <div class="mb-3">
+                        <label for="Phone_Number">Phone Number</label>
+                        <input class="form-control" id="Phone_Number" name="Phone_Number" placeholder="Phone Number"
+                               type="text">
+                    </div>
+
+                    <label for="Alternative_Phone_Number">Alternative Phone Number</label>
+                    <input class="form-control" id="Alternative_Phone_Number" name="Alternative_Phone_Number"
+                           placeholder="Alternative Phone Number" type="text">
+
+
+                    <label for="Email">Email</label>
+                    <input class="form-control" id="Email" name="Email" placeholder="Email" type="text">
+
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal" type="submit">Close</button>
+                        <button class="btn btn-primary" type="submit">Add</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- .Modal end-->
+<div class="modal fade" id="modal-lg">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="model-lg"><i class="fa fa-plus"></i>&nbsp;&nbsp;Edit Data</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="Address">Address</label>
+                        <input class="form-control" id="Address1" name="address" placeholder="Address" type="text">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="Phone_Number1">Phone Number</label>
+                        <input class="form-control" id="Phone_Number1" name="phone_Number1" placeholder="Phone number"
+                               type="text" >
+                    </div>
+                    <div class="form-group">
+                        <label for="Alternative_Phone_Number1">Alternative Phone Number</label>
+                        <input class="form-control" id="Alternative_Phone_Number1" name="Alternative_Phone_Number1"
+                               placeholder="Alternative Phone number"
+                               type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <input class="form-control" id="Email1" name="email"
+                               placeholder="Email"
+                               type="email">
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal" type="submit">Close</button>
+                        <button class="btn btn-primary" type="submit">Add</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title"></h3>
+                        <button class="btn btn-secondary float-right" data-target="#exampleModal" data-toggle="modal"
+                                type="button">
+                            Add content
+                        </button>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body text-center">
+                        <table class="table table-bordered table-striped" id="example1">
+                            <thead>
+                            <tr>
+                                <th scope="col">Address</th>
+                                <th scope="col">Phone Number</th>
+                                <th scope="col">Alternative Phone Number</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if contact1 %}
+                                {% for y in contact1 %}
+                            <tr>
+                                <td>{{ y.Address }}</td>
+                                <td>{{ y.Phone_Number }}</td>
+                                <td>{{ y.Alternative_Phone_Number }}</td>
+                                <td>{{ y.Email }}</td>
+                                <td>
+
+                                    <a href="{% url 'contact2' y.id %}"><button class="badge badge-primary" data-target="#modal-lg" data-toggle="modal" type="button"><i class="fas fa-pen"></i></button></a>
+                                    <a href="{% url 'deletecontact' y.id %}">
+                                        <button class="badge badge-danger"><i aria-hidden="true"
+                                                                              class="fa fa-trash"></i></button>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": false
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!--&lt;!&ndash;    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>&ndash;&gt;-->
+<!--    <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>-->
+<script>
+$(document).ready(function() {
+
+      $.validator.setDefaults({
+
+        submitHandler: function () {
+
+          form.submit();
+
+        }
+
+      });
+      //additional jquery methods
+      $.validator.addMethod("alphanumeric", function (value, element) {
+        return this.optional(element) ||  /^[a-zA-Z ]+$/.test(value);
+      }, "Name should only contain letters and numbers.");
+
+
+
+      $.validator.addMethod("noNumbers", function (value, element) {
+        return this.optional(element) || !/\d/.test(value);
+      }, "Name should not contain numbers.");
+
+
+
+      $.validator.addMethod("noDoubleSpace", function (value, element) {
+        return this.optional(element) || !/\s{2}/.test(value);
+      }, "Name should not contain double spaces.");
+
+
+
+      $.validator.addMethod("coursefee", function(value, element) {
+        return this.optional(element) || /^(\d{1,2})(,\d{2})*(,\d{1,3}){1}\.\d{2}?$/.test(value);
+      }, "Amount should not start with 0.");
+
+
+
+      $.validator.addMethod("Product_Category", function(value, element) {
+        return this.optional(element) || /^[A-Za-z\s\-]+$/.test(value);
+      }, "Product Category should contain only letters.");
+
+
+      $.validator.addMethod("alphanumeric", function (value, element) {
+         return this.optional(element) || /^[a-zA-Z ]+$/.test(value);
+      }, "Name should only contain letters.");
+
+      $.validator.addMethod("noNumbers", function (value, element) {
+         return this.optional(element) || !/\d/.test(value);
+      }, "Name should not contain numbers.");
+
+      $.validator.addMethod("noDoubleSpace", function (value, element) {
+          return this.optional(element) || !/\s{2}/.test(value);
+      }, "Name should not contain double spaces.");
+
+      $.validator.addMethod("noDoubleDot", function (value, element) {
+          return this.optional(element) || !/\.\./.test(value);
+      }, "Email should not contain double dots consecutively.");
+      $.validator.addMethod("Email", function (value, element) {
+        return this.optional(element) ||  /^[\w.%+-]+@[\w.-]+\.[A-Za-z]{2,}$/.test(value);
+      }, "Email should only contain letters and numbers and  character.");
+
+      $.validator.addMethod("phoneNumber", function (value, element) {
+          return this.optional(element) || /^[6-9]\d{9}$/.test(value);
+      }, "Phone number should start with 6, 7, 8, or 9 and have a length of 10.");
+      $.validator.addMethod("Employee_id", function(value, element) {
+        return this.optional(element) || /^[A-Za-z0-9]$/.test(value);
+      }, "Employee id should contain letters and numbers.");
+      $.validator.addMethod("department", function (value, element) {
+          return this.optional(element) || /^[A-Za-z\s\-&.,()]*$/.test(value);
+      }, "department should contain letters.");
+      $.validator.addMethod("designation", function (value, element) {
+          return this.optional(element) || /^[A-Za-z\s\-&.,()]*$/.test(value);
+      }, "designation should contain letters.");
+
+
+
+
+
+
+  $('#contactform').validate({
+    rules: {
+      Address: {
+       required: true,
+
+      },
+      Phone_Number: {
+         required: true,
+
+
+      },
+      Alternative_Phone_Number: {
+        required: true,
+
+      },
+
+      Email: {
+         required: true,
+
+
+      },
+
+
+    messages: {
+      Address: {
+        required: '*Please enter your Address',
+      },
+      Phone_Number: {
+         required: '*Please enter your Phone_Number',
+      },
+      Alternative_Phone_Number: {
+         required: '*Please enter your Alternative_Phone_Number',
+      },
+      Email: {
+         required: '*Please enter your Email',
+      },
+
+  });
+});
+</script>
+
+
+
+{% endblock %}

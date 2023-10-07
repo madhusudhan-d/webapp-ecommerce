@@ -1,0 +1,488 @@
+{% extends 'farm_app/base.html' %}
+{% block content %}
+
+
+<head>
+     <!-- Bootstrap icons CDNS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+    <body>
+
+
+
+		<!-- Scroll-top -->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <i class="fas fa-angle-up"></i>
+        </button>
+        <!-- Scroll-top-end-->
+
+        <!-- header-area -->
+        <header>
+            <!-- main-area -->
+        <main>
+
+            <!-- breadcrumb-area -->
+            <!-- <div class="breadcrumb-area breadcrumb-bg-two">
+                <div class="container custom-container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadcrumb-content">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="../farm_app/index.html">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="../farm_app/index.html">Pages</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">order status</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- breadcrumb-area-end -->
+
+        <!--search order -->
+         <div class="header-search-wrap m-2">
+            <form action="#" style="margin-left: 10px;">
+                <input type="text" placeholder="Enter Tracking Number...">
+                <button><i class="flaticon-loupe-1"></i></button>
+            </form>
+         </div>
+        <!-- search order -->
+
+
+        <!-- cart-area -->
+        <div class="cart-area pt-90 pb-90">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-xl-10" style="margin-right: 25px;margin-top: -85px;">
+                        <div class="cart-wrapper">
+
+                            <div class="card-header" style="margin-top:-14px;margin-left:-30px;margin-right:-30px;">
+                                <a href="index.html"><img src="../../static/img/logo/f_logo.png" alt="Logo" style="height:90px;width:140px;margin-right:100px"></a>
+                                <h3 style="color: orange;text-align: center;margin-top: -50px;margin-right: 130px;margin-left: 130px;"><b>Invoice</b></h3>
+                            </div>
+                            <div>
+                                <div class="row" style="margin-top: 50px;margin-left: 70px;margin-right: 50px;">
+                                    <div class="col-sm-4">
+                                        <p><b>Order ID:</b> OD0000001</p>
+                                        <p><b>Order Date:</b> 12/05/23</p>
+                                        <p><b>Invoice Date:</b> 10/04/23</p>
+                                        <p><b>VAT/TIN:</b> 76543567879</p>
+                                        <p><b>CST #:</b></p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p><b>Billing Address</b></p>
+                                        <p>Lakshmi Duppada
+                                           palakonda, palakonda Mandal
+                                           srikakulam Dist.532440
+                                           plot No:50.63.64.65
+                                           phone: 8765498764
+                                        </p>
+
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p><b>Shipping Address</b></p>
+                                        <p>Rudra Farm
+                                           Vizag, Vizag Mandal
+                                           visakhapattanam Dist.532440
+                                           plot No:50.63.64.65
+                                           phone: 9765498767
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-thumbnail"></th>
+                                            <th class="product-name">Product</th>
+
+                                            <th class="product-quantity">QUANTITY</th>
+                                            <th class="product-quantity">Price</th>
+                                            <th class="product-quantity">Tax</th>
+                                            <th class="product-subtotal">SUBTOTAL</th>
+                                            <th class="product-delete"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td class="product-thumbnail"><img src="../../static/img/product/l_milk3.png" alt=""></td>
+                                            <td class="product-name">
+                                                <h4> Buffalo Milk</h4>
+                                            </td>
+
+                                            <td class="product-name">
+                                                <h4>2</h4>
+                                            </td>
+                                            <td class="product-price">₹90.00/l</td>
+                                            <td class="product-name">
+                                                <h4>0%</h4>
+                                            </td>
+
+                                            <td class="product-subtotal"><span>₹90.00/l</span></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="product-thumbnail"><img src="../../static/img/product/p_ghee1.png" alt=""></td>
+                                            <td class="product-name">
+                                                <h4>Ghee</h4>
+                                            </td>
+
+                                            <td class="product-name">
+                                                <h4>2</h4>
+                                            </td>
+                                            <td class="product-price">₹150.00/kg</td>
+                                            <td class="product-name">
+                                                <h4>0%</h4>
+                                            </td>
+
+                                            <td class="product-subtotal"><span>₹150.00/kg</span></td>
+
+
+
+                                        </tr><hr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><h5>Grand Total</h5></td>
+                                            <td><b><i class="bi bi-currency-rupee"></i> 290.76</b></td>
+                                        </tr>
+
+
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- cart-area-end -->
+
+        <!-- checkout-area -->
+        <div class="checkout-area pt-90 pb-90">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="checkout-progress-wrap">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+
+                            <div class="checkout-progress-step">
+                                <ul>
+                                    <li class="active">
+                                        <div class="icon"><i class="fas fa-check"></i></div>
+                                        <span>
+                                            <i class="bi bi-card-list" style="font-size: 25px;color: black;"></i>
+                                            <b>Order Processed</b>
+                                            <p> 10.21 AM 22/05/23</p>
+                                        </span>
+                                    </li>
+                                    <li class="active">
+                                        <div class="icon"><i class="fas fa-check"></i></div>
+                                        <span>
+                                            <i class="bi bi-box" style="font-size: 25px;color: black;"></i>
+                                            <b>Order Shipped</b>
+                                            <p> 10.21 AM 22/05/23</p>
+                                        </span>
+                                    </li>
+
+                                    <li class="active">
+                                        <div class="icon"><i class="fas fa-check"></i></div>
+                                        <span>
+                                            <i class="bi bi-truck" style="font-size: 25px;color: black;"></i>
+                                            <b>Order En Route</b>
+                                            <p> 8.21 AM 25/05/23</p>
+                                        </span>
+                                    </li>
+                                    <li class="active">
+                                        <div class="icon"></div>
+                                        <span>
+                                            <i class="bi bi-house-fill" style="font-size: 25px;color: black;"></i>
+                                            <b>Order Arrived</b>
+                                            <p> 9.21 AM 25/05/23</p>
+                                        </span>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- checkout-area-end -->
+
+
+
+
+
+
+
+
+        </main>
+        <!-- order status -->
+        <!-- main-area-end -->
+
+
+
+
+<!-- Mirrored from themebeyond.com/pre/ganic-prev/ganic-live/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 May 2023 08:55:56 GMT -->
+{% endblock %}
+
+
+
+
+
+
+
+
+<!--<head>-->
+<!--     &lt;!&ndash; Bootstrap icons CDNS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">-->
+<!--</head>-->
+<!--    <body>-->
+
+
+
+<!--		&lt;!&ndash; Scroll-top &ndash;&gt;-->
+<!--        <button class="scroll-top scroll-to-target" data-target="html">-->
+<!--            <i class="fas fa-angle-up"></i>-->
+<!--        </button>-->
+<!--        &lt;!&ndash; Scroll-top-end&ndash;&gt;-->
+
+<!--        &lt;!&ndash; header-area &ndash;&gt;-->
+
+<!--            &lt;!&ndash; main-area &ndash;&gt;-->
+<!--        <main>-->
+
+<!--            &lt;!&ndash; breadcrumb-area &ndash;&gt;-->
+<!--            &lt;!&ndash; <div class="breadcrumb-area breadcrumb-bg-two">-->
+<!--                <div class="container custom-container">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-12">-->
+<!--                            <div class="breadcrumb-content">-->
+<!--                                <nav aria-label="breadcrumb">-->
+<!--                                    <ol class="breadcrumb">-->
+<!--                                        <li class="breadcrumb-item"><a href="../farm_app/index.html">Home</a></li>-->
+<!--                                        <li class="breadcrumb-item"><a href="../farm_app/index.html">Pages</a></li>-->
+<!--                                        <li class="breadcrumb-item active" aria-current="page">order status</li>-->
+<!--                                    </ol>-->
+<!--                                </nav>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div> &ndash;&gt;-->
+
+<!--            &lt;!&ndash; breadcrumb-area-end &ndash;&gt;-->
+
+<!--        &lt;!&ndash;search order &ndash;&gt;-->
+<!--        <div class="header-search-wrap col-md-9 mt-lg-3" style="margin-left: 150px;" >-->
+<!--            <form action="#">-->
+
+<!--                <input type="text" placeholder="Enter tracking number...">-->
+<!--                <button><i class="flaticon-loupe-1"></i></button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; search order &ndash;&gt;-->
+
+
+<!--        &lt;!&ndash; cart-area &ndash;&gt;-->
+<!--        <div class="cart-area pt-90 pb-90">-->
+<!--            <div class="container" style="margin-top: -45px;">-->
+<!--                <div class="row justify-content-center">-->
+<!--                    <div class="col-xl-10" style="margin-right: 25px;margin-top: -25px;">-->
+<!--                        <div class="cart-wrapper">-->
+
+<!--                            <div class="card-header" style="margin-top:-14px;margin-left:-30px;margin-right:-30px;">-->
+<!--                                <a href="index.html"><img src="../../static/img/logo/f_logo.png" alt="Logo" style="height:90px;width:180px;margin-right:90px"></a>-->
+<!--                                <h3 style="color: orange;text-align: center;margin-top: -50px;margin-right: 130px;"><b>Invoice</b></h3>-->
+<!--                            </div>-->
+<!--                            <div style="display: flex;justify-content: space-between;margin-top:-14px;margin-left:-30px;margin-right:-30px;height: 350px;">-->
+<!--                                <div class="row" style="margin-top: 50px;margin-left: 70px;margin-right: 50px;">-->
+<!--                                    <div class="col-sm-4">-->
+<!--                                        <p><b>Order ID:</b> OD0000001</p>-->
+<!--                                        <p><b>Order Date:</b> 12/05/23</p>-->
+<!--                                        <p><b>Invoice Date:</b> 10/04/23</p>-->
+<!--                                        <p><b>VAT/TIN:</b> 76543567879</p>-->
+<!--                                        <p><b>CST #:</b></p>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-sm-4">-->
+<!--                                        <p><b>Billing Address</b></p>-->
+<!--                                        <p>Lakshmi Duppada-->
+<!--                                           palakonda, palakonda Mandal-->
+<!--                                           srikakulam Dist.532440-->
+<!--                                           plot No:50.63.64.65-->
+<!--                                           phone: 8765498764-->
+<!--                                        </p>-->
+
+<!--                                    </div>-->
+<!--                                    <div class="col-sm-4">-->
+<!--                                        <p><b>Shipping Address</b></p>-->
+<!--                                        <p>Rudra Farm-->
+<!--                                           Vizag, Vizag Mandal-->
+<!--                                           visakhapattanam Dist.532440-->
+<!--                                           plot No:50.63.64.65-->
+<!--                                           phone: 9765498767-->
+<!--                                        </p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="table-responsive">-->
+<!--                                <table class="table mb-0">-->
+<!--                                    <thead>-->
+<!--                                        <tr>-->
+<!--                                            <th class="product-thumbnail"></th>-->
+<!--                                            <th class="product-name">Product</th>-->
+
+<!--                                            <th class="product-quantity">QUANTITY</th>-->
+<!--                                            <th class="product-quantity">Price(<i class="bi bi-currency-rupee"></i>)</th>-->
+<!--                                            <th class="product-quantity">Tax</th>-->
+<!--                                            <th class="product-subtotal">SUBTOTAL(<i class="bi bi-currency-rupee"></i>)</th>-->
+<!--                                            <th class="product-delete"></th>-->
+<!--                                        </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody>-->
+
+<!--                                        <tr>-->
+<!--                                            <td class="product-thumbnail"><img src="../../static/img/product/l_milk3.png" alt=""></td>-->
+<!--                                            <td class="product-name">-->
+<!--                                                <h4> Buffalo Milk</h4>-->
+<!--                                            </td>-->
+
+<!--                                            <td class="product-name">-->
+<!--                                                <h4>2</h4>-->
+<!--                                            </td>-->
+<!--                                            <td class="product-price">₹90.00/l</td>-->
+<!--                                            <td class="product-name">-->
+<!--                                                <h4>0%</h4>-->
+<!--                                            </td>-->
+
+<!--                                            <td class="product-subtotal"><span>₹90.00/l</span></td>-->
+
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td class="product-thumbnail"><img src="../../static/img/product/p_ghee1.png" alt=""></td>-->
+<!--                                            <td class="product-name">-->
+<!--                                                <h4>Ghee</h4>-->
+<!--                                            </td>-->
+
+<!--                                            <td class="product-name">-->
+<!--                                                <h4>2</h4>-->
+<!--                                            </td>-->
+<!--                                            <td class="product-price">₹150.00/kg</td>-->
+<!--                                            <td class="product-name">-->
+<!--                                                <h4>0%</h4>-->
+<!--                                            </td>-->
+
+<!--                                            <td class="product-subtotal"><span>₹150.00/kg</span></td>-->
+
+
+
+<!--                                        </tr><hr>-->
+<!--                                        <tr>-->
+<!--                                            <td></td>-->
+<!--                                            <td></td>-->
+<!--                                            <td></td>-->
+<!--                                            <td></td>-->
+<!--                                            <td><h5>Grand Total</h5></td>-->
+<!--                                            <td><b><i class="bi bi-currency-rupee"></i> 5000.76</b></td>-->
+<!--                                        </tr>-->
+
+
+
+<!--                                    </tbody>-->
+<!--                                </table>-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; cart-area-end &ndash;&gt;-->
+
+<!--        &lt;!&ndash; checkout-area &ndash;&gt;-->
+<!--        <div class="checkout-area pt-90 pb-90" style="margin-top: -50px;">-->
+<!--            <div class="container">-->
+<!--                <div class="row justify-content-center">-->
+<!--                    <div class="col-lg-10">-->
+<!--                        <div class="checkout-progress-wrap">-->
+<!--                            <div class="progress">-->
+<!--                                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>-->
+<!--                            </div>-->
+
+<!--                            <div class="checkout-progress-step">-->
+
+<!--                                <ul>-->
+<!--                                    <li class="active">-->
+<!--                                        <div class="icon"><i class="bi bi-person-video"></i></div>-->
+<!--                                        <span> Order Packing</span>-->
+<!--                                        <span><p> 10.21 AM 22/05/23</p></span>-->
+<!--                                    </li>-->
+<!--                                    <li class="active">-->
+<!--                                        <div class="icon">1</div>-->
+<!--                                        <span>Ordered</span>-->
+<!--                                        <span><p> 10.21 AM 22/05/23</p></span>-->
+<!--                                    </li>-->
+
+<!--                                    <li class="active">-->
+<!--                                        <div class="icon">2</div>-->
+<!--                                        <span>Shipped</span>-->
+<!--                                        <span><p> 8.21 AM 25/05/23</p></span>-->
+<!--                                    </li>-->
+<!--                                    <li class="active">-->
+<!--                                        <div class="icon">3</div>-->
+<!--                                        <span>On the way</span>-->
+<!--                                        <span><p> 9.21 AM 25/05/23</p></span>-->
+<!--                                    </li>-->
+<!--                                    <li class="active">-->
+<!--                                        <div class="icon"><i class="bi bi-person-fill"></i></div>-->
+<!--                                        <span>Delivered</span>-->
+<!--                                        <span><p> 1.30 PM 26/05/23</p></span>-->
+<!--                                    </li>-->
+
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; checkout-area-end &ndash;&gt;-->
+
+
+
+
+
+
+
+
+<!--        </main>-->
+<!--        &lt;!&ndash; order status &ndash;&gt;-->
+<!--        &lt;!&ndash; main-area-end &ndash;&gt;-->
+
+
+
+<!-- Mirrored from themebeyond.com/pre/ganic-prev/ganic-live/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 May 2023 08:55:56 GMT -->
+
+

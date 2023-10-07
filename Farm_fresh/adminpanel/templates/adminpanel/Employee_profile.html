@@ -1,0 +1,351 @@
+{% extends 'adminpanel/base.html' %}
+{% block content %}
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h3>Employee Profile</h3>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Employee Profile</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+    <div class="content">
+      <div class="container-fluid">
+                <div class="row">
+                  <!-- card's column -->
+                  <div class="col-md-3">
+                     <div class="card card-primary card-outline">
+                          <div class="card-body box-profile">
+                            <div class="text-center">
+                              <img class="profile-user-img img-fluid img-circle"
+                                   src="../../static/dist/img/avatar.png"
+                                   alt="User profile picture">
+                            </div>
+                            <h3 class="profile-username text-center">{{ employee.Employee_id }}</h3>
+                            <p class="text-muted text-center">{{ employee.Employee_name }}</p>
+<!--                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>-->
+                          </div>
+                          <!-- /.card-body -->
+                        </div>
+                  </div>
+                   <!-- card's column closed -->
+
+                  <!-- column for the other side of the page content -->
+                    <div class="col-md-9">
+              <div class="card">
+                <div class="card-header p-2">
+                  <ul class="nav nav-pills">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#empdetails">Personal
+                      Information</a></li>
+
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#attendence">Attendence</a></li>
+
+                  </ul>
+                </div>
+                <div class="tab-content">
+                  <div class="active tab-pane" id="empdetails">
+                    <div class="card-header">Personal Information</div>
+                    <div class="card-body">
+                      <table class=" table table-responsive-lg table-striped table-bordered">
+                        <thead>
+
+                        <tr class="bg-primary">
+
+                          <th>Employee ID</th>
+                          <th>Employee Name</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+                        <tr>
+                          <td>{{ employee.Employee_id }}</td>
+                          <td>{{ employee.Employee_name }}</td>
+
+                        </tr>
+
+
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="card-body">
+                      <table class="table table-responsive-lg table-striped table-bordered">
+                        <thead>
+                        <tr class="bg-primary">
+                          <th>Email</th>
+                          <th>Phone Number</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+                        <tr>
+                          <td>{{ employee.Email }}</td>
+                          <td>{{ employee.Phone_Number }}</td>
+
+                        </tr>
+
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="card-body">
+                      <table class="table table-responsive-lg table-striped table-bordered">
+                        <thead>
+                        <tr class="bg-primary">
+                          <th>Designation</th>
+                          <th>Department</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr>
+
+                          <td>{{ employee.Designation }}</td>
+                          <td>{{ employee.department }}</td>
+                        </tr>
+
+                        </tbody>
+                      </table>
+                    </div>
+
+                  </div>
+
+
+
+                           <!--                Attendence-->
+                  <div class=" tab-pane" id="attendence">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-3 col-sm-6 col-12">
+                          <div class="info-box">
+                            <span class="info-box-icon bg-info"><i class="nav-icon far fa-calendar-alt"></i></span>
+                            <div class="info-box-content">
+                              <span class="info-box-text">Working Days</span>
+                              <span class="info-box-number">{{ total_working_days }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-12">
+                          <div class="info-box">
+                            <span class="info-box-icon bg-info"><i class="bi bi-calendar-check-fill"></i></span>
+                            <div class="info-box-content">
+                              <span class="info-box-text">Total Attended</span>
+                              <span class="info-box-number">{{ days_present }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-12">
+                          <div class="info-box">
+                            <span class="info-box-icon bg-info"><i class="bi bi-calendar-minus-fill"></i></span>
+
+                            <div class="info-box-content">
+                              <span class="info-box-text">Total Leaves</span>
+                              <span class="info-box-number">{{ days_absent }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-12">
+                          <div class="info-box">
+                            <span class="info-box-icon bg-info"><i class="bi bi-percent"></i></span>
+
+                            <div class="info-box-content">
+                              <span class="info-box-text">Percentage</span>
+                              <span class="info-box-number">{{ attendance_percentage }}%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12" id="accordion">
+                          <div class="card-header">Attendence Details</div>
+                          <div class="card card-primary card-outline">
+                            <a class="d-block w-100" data-toggle="collapse" href="#collapseOne">
+                              <div class="card-header">
+                                <h4 class="card-title w-100">2023</h4>
+                              </div>
+                            </a>
+                            <div class="collapse" data-parent="#accordion" id="collapseOne">
+                              <div class="card-body">
+                                <table class="table table-bordered table-responsive-lg table-striped" id="example1">
+                                  <thead>
+                                  <tr class="bg-primary">
+                                    <th>Employee</th>
+                                    <th>Working Days</th>
+                                    <th>Total Attended</th>
+                                    <th>Total Leaves</th>
+                                    <th>Percentage(%)</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+
+
+                                    <tr>
+
+                                        <td>{{ employee.Employee_name }}</td>
+                                        <td> {{ total_working_days }}</td>
+                                        <td> {{ days_present }}</td>
+                                        <td>{{ days_absent }}</td>
+                                        <td>{{ attendance_percentage }}%</td>
+
+                                    </tr>
+
+
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <!--                        2-->
+<!--                          <div class="card card-primary card-outline">-->
+<!--                            <a class="d-block w-100" data-toggle="collapse" href="#collapseTwo">-->
+<!--                              <div class="card-header">-->
+<!--                                <h4 class="card-title w-100">2021</h4>-->
+<!--                              </div>-->
+<!--                            </a>-->
+<!--                            <div class="collapse" data-parent="#accordion" id="collapseTwo">-->
+<!--                              <div class="card-body">-->
+<!--                                <table class="table table-responsive-lg table-bordered table-striped" id="example2">-->
+<!--                                  <thead>-->
+<!--                                  <tr class="bg-primary">-->
+<!--                                    <th>Month</th>-->
+<!--                                    <th>Working Days</th>-->
+<!--                                    <th>Total Attended</th>-->
+<!--                                    <th>Total Leaves</th>-->
+<!--                                    <th>Percentage(%)</th>-->
+<!--                                  </tr>-->
+<!--                                  </thead>-->
+<!--                                  <tbody>-->
+<!--                                  <tr>-->
+<!--                                    <td>January</td>-->
+<!--                                    <td>28</td>-->
+<!--                                    <td>26</td>-->
+<!--                                    <td>2</td>-->
+<!--                                    <td>98</td>-->
+<!--                                  </tr>-->
+<!--                                  <tr>-->
+<!--                                    <td>February</td>-->
+<!--                                    <td>26</td>-->
+<!--                                    <td>24</td>-->
+<!--                                    <td>2</td>-->
+<!--                                    <td>98</td>-->
+<!--                                  </tr>-->
+<!--                                  <tr>-->
+<!--                                    <td>March</td>-->
+<!--                                    <td>28</td>-->
+<!--                                    <td>26</td>-->
+<!--                                    <td>2</td>-->
+<!--                                    <td>98</td>-->
+<!--                                  </tr>-->
+<!--                                  <tr>-->
+<!--                                    <td>April</td>-->
+<!--                                    <td>28</td>-->
+<!--                                    <td>26</td>-->
+<!--                                    <td>2</td>-->
+<!--                                    <td>98</td>-->
+<!--                                  </tr>-->
+<!--                                  <tr>-->
+<!--                                    <td>May</td>-->
+<!--                                    <td>28</td>-->
+<!--                                    <td>26</td>-->
+<!--                                    <td>2</td>-->
+<!--                                    <td>98</td>-->
+<!--                                  </tr>-->
+<!--                                  <tr>-->
+<!--                                    <td>June</td>-->
+<!--                                    <td>28</td>-->
+<!--                                    <td>26</td>-->
+<!--                                    <td>2</td>-->
+<!--                                    <td>98</td>-->
+<!--                                  </tr>-->
+<!--                                  <tr>-->
+<!--                                    <td>July</td>-->
+<!--                                    <td>28</td>-->
+<!--                                    <td>26</td>-->
+<!--                                    <td>2</td>-->
+<!--                                    <td>98</td>-->
+<!--                                  </tr>-->
+<!--                                  <tr>-->
+<!--                                    <td>August</td>-->
+<!--                                    <td>28</td>-->
+<!--                                    <td>26</td>-->
+<!--                                    <td>2</td>-->
+<!--                                    <td>98</td>-->
+<!--                                  </tr>-->
+<!--                                  <tr>-->
+<!--                                    <td>September</td>-->
+<!--                                    <td>28</td>-->
+<!--                                    <td>26</td>-->
+<!--                                    <td>2</td>-->
+<!--                                    <td>98</td>-->
+<!--                                  </tr>-->
+<!--                                  <tr>-->
+<!--                                    <td>October</td>-->
+<!--                                    <td>28</td>-->
+<!--                                    <td>26</td>-->
+<!--                                    <td>2</td>-->
+<!--                                    <td>98</td>-->
+<!--                                  </tr>-->
+<!--                                  <tr>-->
+<!--                                    <td>November</td>-->
+<!--                                    <td>28</td>-->
+<!--                                    <td>26</td>-->
+<!--                                    <td>2</td>-->
+<!--                                    <td>98</td>-->
+<!--                                  </tr>-->
+<!--                                  <tr>-->
+<!--                                    <td>December</td>-->
+<!--                                    <td>28</td>-->
+<!--                                    <td>26</td>-->
+<!--                                    <td>2</td>-->
+<!--                                    <td>98</td>-->
+<!--                                  </tr>-->
+<!--                                  </tbody>-->
+<!--                                </table>-->
+<!--                              </div>-->
+<!--                            </div>-->
+<!--                          </div>-->
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                        </div>
+
+
+
+
+
+
+        <aside class="control-sidebar control-sidebar-dark">
+          <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+      </div>
+    </div>
+
+
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js"></script>
+                        </div>
+              </div>
+            </div>+
+{% endblock %}

@@ -1,0 +1,241 @@
+{%  extends 'adminpanel/base.html' %}
+{% block content %}
+
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <!-- Navbar -->
+    <!--Model start-->
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Spam Customer table</h4>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="quickForm">
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="Name">First Name</label>
+                                    <input class="form-control" id="name" placeholder="First Name" type="Name">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="Name">Last Name</label>
+                                    <input class="form-control" id="Name2" placeholder="Last Name" type="name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress">Address 1</label>
+                                <input class="form-control" id="inputAddress" placeholder="1234 Main St"
+                                       type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress2">Address 2</label>
+                                <input class="form-control" id="inputAddress2"
+                                       placeholder="Apartment, studio, or floor"
+                                       type="text">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputCity">Country</label>
+                                    <select class="form-control" id="" name="">
+                                        <option value="india">india</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputCity">State</label>
+                                    <select class="form-control" id="2" name="">
+                                        <option value="State">State</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputCity">Zip Code</label>
+                                    <input class="form-control" id="Zip code" placeholder="Zip Code" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputCity">Phone Number</label>
+                                <input class="form-control" id="inputCity" placeholder="Phone Number" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input class="form-control" id="exampleInputEmail1" name="email"
+                                       placeholder="Enter email"
+                                       type="email">
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
+
+                    </form>
+                    <div style="margin-left:20px;margin-bottom:25px">
+                        <button class="btn btn-primary" type="button">Save</button>&nbsp;
+                        <button class="btn btn-primary" data-dismiss="modal" type="button">Close</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- Main content -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Spam Customers Table</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Spam</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+
+                        <!-- /.card-header -->
+
+                        <!-- /.card -->
+
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Spam Customer List</h3>
+                                <div>
+                                    <button class="btn btn-secondary float-right" data-target="#modal-default" data-toggle="modal" type="button">
+                                        Add Customer
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-bordered table-striped" id="example1">
+                                    <thead>
+                                    <tr>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Address</th>
+                                        <th>Phone Number</th>
+                                        <th>Email</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <td>srinu</td>
+                                    <td>mendadala</td>
+                                    <td>visakhapatnam</td>
+                                    <td>9381387842</td>
+                                    <td>srinumendadala@gmail.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>sai</td>
+                                        <td>mendadala</td>
+                                        <td>srikakulam</td>
+                                        <td>8978421761</td>
+                                        <td>saimendadala@gmail.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>anil</td>
+                                        <td>Ambati</td>
+                                        <td>pundi</td>
+                                        <td>4561223546</td>
+                                        <td>vijaysurada@gmail.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>vijay</td>
+                                        <td>surada</td>
+                                        <td>pundi</td>
+                                        <td>4561223546</td>
+                                        <td>vijaysurada@gmail.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>vijay</td>
+                                        <td>surada</td>
+                                        <td>pundi</td>
+                                        <td>4561223546</td>
+                                        <td>vijaysurada@gmail.com</td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>Rendering engine</th>
+                                        <th>Browser</th>
+                                        <th>Platform(s)</th>
+                                        <th>Engine version</th>
+                                        <th>CSS grade</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="../../static/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="../../static/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../static/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../static/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../static/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../../static/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../static/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../../static/plugins/jszip/jszip.min.js"></script>
+<script src="../../static/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../../static/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../../static/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../../static/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../../static/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../static/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../static/dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
+
+
+</script>
+{% endblock %}

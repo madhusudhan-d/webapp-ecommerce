@@ -1,0 +1,161 @@
+{% extends 'farm_app/base.html' %}
+{% block content %}
+        <!-- main-area -->
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+            <!-- shop-area -->
+
+
+            <section class="shop--area pt-90 pb-90">
+
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-3 order-2 order-lg-0">
+                            <aside class="shop-sidebar">
+                                <div class="widget shop-widget">
+                                    <div class="shop-widget-title">
+                                        <h6 class="title">Product Categories</h6>
+                                    </div>
+                                        <div class="shop-cat-list">
+                                            <ul>
+                                                {% for cat in category %}
+                                                     <li><a href="{% url 'p_list' cat.pk %}">{{ cat.name }}<span>+</span></a></li>
+                                                 {% endfor %}
+                                            </ul>
+                                        </div>
+                                </div>
+
+
+
+
+                                <div class="widget shop-widget">
+                                    <div class="shop-widget-title">
+                                        <h6 class="title">NEW PRODUCT</h6>
+                                    </div>
+                                    <div class="sidebar-product-list">
+                                        <ul>
+                                            <li>
+                                                <div class="sidebar-product-thumb">
+                                                    <a href=""><img src="../../static/img/product/p_ghee1.png" alt=""></a>
+                                                </div>
+                                                <div class="sidebar-product-content">
+                                                    <div class="rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <h5><a href="#">Pure Ghee</a></h5>
+                                                    <span>₹150.00/kg</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="sidebar-product-thumb">
+                                                    <a href="#"><img src="../../static/img/product/l_milk3.png" alt=""></a>
+                                                </div>
+                                                <div class="sidebar-product-content">
+                                                    <div class="rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <h5><a href="#">Buffalo Milk</a></h5>
+                                                    <span>₹90.00/l</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="sidebar-product-thumb">
+                                                    <a href=""><img src="../../static/img/product/pista_milk (2).png" alt=""></a>
+                                                </div>
+                                                <div class="sidebar-product-content">
+                                                    <div class="rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <h5><a href="">Pista Milk</a></h5>
+                                                    <span>₹50.00</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="col-9">
+                            <div class="shop-top-meta mb-30">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-7">
+                                        <div class="shop-top-left">
+                                            <ul>
+<!--                                                <li><a href="#"><i class="fas fa-bars"></i> FILTER</a></li>-->
+                                                <li></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shop-products-wrap">
+                                <div class="row justify-content-center">
+                                    <div class="col-xl-3 col-md-4 col-sm-6">
+
+<!--                                        <span class="batch">New </span>-->
+                                        {% for pro in product %}
+                                         <div class="sp-product-item">
+                                             <div class="sp-product-thumb">
+                                                  <a href="{% url 'p_details' pro.id %}">
+                                                      <div>
+                                                          <img src="{{ pro.product_image.url }}" width="300px" height="200px" alt="">
+                                                          <h6 class="title" style="color:orange;">{{ pro.title }}</h6>
+                                                          <p>Rs.{{ pro.discounted_price }}/-</p>
+<!--                                                              <small class="fw-light text-decoration-line-through">{{ pro.selling_price }}</small>-->
+
+                                                            <a href="#"><input type="submit" value="add to cart" class="btn btn" style="margin-left:-10px;border-radius:5px;"></a>
+
+                                                      </div>
+                                                  </a>
+                                             </div>
+                                         </div>
+                                        {% endfor %}
+
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                     <div class="pagination-wrap">-->
+<!--                                <ul>-->
+<!--                                    <li class="prev"><a href="#">Prev</a></li>-->
+<!--                                    <li><a href="#">1</a></li>-->
+<!--                                    <li class=""><a href="#">2</a></li>-->
+<!--                                    <li><a href="#">3</a></li>-->
+<!--                                    <li><a href="#">4</a></li>-->
+<!--                                    <li><a href="#">...</a></li>-->
+<!--                                    <li><a href="#">10</a></li>-->
+<!--                                    <li class="next"><a href="#">Next</a></li>-->
+<!--                                </ul>-->
+<!--                     </div>-->
+            </section>
+
+
+
+            <!-- shop-area-end -->
+        <!-- main-area-end -->
+
+{% endblock %}

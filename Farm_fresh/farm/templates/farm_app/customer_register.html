@@ -1,0 +1,292 @@
+{% extends 'farm_app/base.html' %}
+{% block content %}
+<head>
+
+
+</head>
+<style>
+    .error{
+    color: red;
+    }
+</style>
+<main>
+            <!-- checkout-area -->
+            <div class="checkout-area pt-90 pb-90">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <form action="#" method="POST" id="Customer_Form" class="shadow p-5">
+                                        {% csrf_token %}
+
+                                <div class="checkout-form-top row justify-content-center breadcrumb-area breadcrumb-bg-two" style="margin-top:-50px;margin-right:-48px;margin-left:-48px;"><h5>Customer Register</h5></div>
+<!--                                         <h5 class="card-header row justify-content-center breadcrumb-area breadcrumb-bg-two" style="margin-top:-10px;"><h3>Customer Register</h3></h5>-->
+                                    <div class="container">
+                                        <div  class="row my-8">
+                                            <div class="col-sm-12 offset-sm-13">
+
+                                                     <div class="mb-3">
+                                                         <label for="username" class="form-label"><b>Username</b></label>
+                                                         <input type="text" value="{{value.username}}"  class="form-control" name="username"  placeholder=" Enter your username" id="username" >
+                                                     </div>
+                                                    <div class="mb-3">
+                                                        <label  for="email" class="form-label" ><b>Email</b> </label>
+                                                        <input type="email" name="email" value="{{value.email}}" class="form-control"  placeholder=" Enter your Email" id="email" >
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label for="txtNewPassword" class="form-label"><b>Password</b> </label>
+                                                        <input type="password" name="password" class="form-control" placeholder=" Enter your Password"  id="txtNewPassword"  >
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="txtConfirmPassword" class="form-label"><b>Confirm Password </b></label>
+                                                        <input type="password" name="confirm_password"  class="form-control" placeholder=" Enter your Confirm password" id="txtConfirmPassword">
+                                                        	<div class="registrationFormAlert" style="color:green;" id="CheckPasswordMatch">
+                                                    </div>
+<!--                                                        <br>-->
+<!--                                                        <div class="mb-3">-->
+<!--                                                            <label for="phone_number" class="form-label"><b>Phone Number</b></label>-->
+<!--                                                            <input type="text" name="phone_number" class="form-control" placeholder="Enter your Phone number" id="phone_number">-->
+<!--                                                        </div>-->
+
+<!--                                                    <div class="d-flex flex-row mt-4" style="width:10px">-->
+<!--                                                          <input type="text" class="form-control" name="otp" autofocus="" />&nbsp;-->
+<!--                                                          <input type="text" class="form-control" name="otp"/>&nbsp;-->
+<!--                                                          <input type="text" class="form-control" name="otp"/>&nbsp;-->
+<!--                                                          <input type="text" class="form-control" name="otp"/>-->
+<!--                                                    </div>-->
+
+<!--                                                       <div class="button"style="margin-right:-12px;margin-top:20px;">-->
+<!--                                                        <div class="mb-3">-->
+<!--                                                           <small class="text-success btn-sm" style="margin-left:-10px;margin-top:-45px;"><a href="#"-->
+<!--                                                           class="text-warning btn-sm"><b>Verify OTP?</b></a></small>-->
+<!--                                                        </div>-->
+
+                                                     <div style="margin-left:-10px;margin-top:30px;">
+                                                        <div class="mb-3">
+                                                           <small class="text-success btn-sm" style="margin-left:5px;margin-top:-55px;"><b>Existing User?</b><a href="{% url 'farm_login' %}"
+                                                           class="text-warning btn-sm"><b>Login Now</b></a></small>
+                                                        </div>
+
+                                                     </div>
+                                                           <div class="cpl-12 mt-5">
+                                                               <input class="btn btn" type="submit" value="Submit" style="border-radius:20px;">
+                                                                <input class="btn btn" type="submit" value="cancel" style="border-radius:20px;">
+                                                           </div>
+
+                                                    </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                {% if error %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{error}}
+                                    </div>
+                                {% endif %}
+                            </form>
+                                    </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script>
+$(document).ready(function() {
+
+      $.validator.setDefaults({
+
+        submitHandler: function () {
+
+          form.submit();
+
+        }
+
+      });
+      //additional jquery methods
+      $.validator.addMethod("alphanumeric", function (value, element) {
+        return this.optional(element) ||  /^[a-zA-Z ]+$/.test(value);
+      }, "Name should only contain letters and numbers.");
+
+
+
+      $.validator.addMethod("noNumbers", function (value, element) {
+        return this.optional(element) || !/\d/.test(value);
+      }, "Name should not contain numbers.");
+
+
+
+      $.validator.addMethod("noDoubleSpace", function (value, element) {
+        return this.optional(element) || !/\s{2}/.test(value);
+      }, "Name should not contain double spaces.");
+
+
+
+      $.validator.addMethod("coursefee", function(value, element) {
+        return this.optional(element) || /^(\d{1,2})(,\d{2})*(,\d{1,3}){1}\.\d{2}?$/.test(value);
+      }, "Amount should not start with 0.");
+
+
+
+      $.validator.addMethod("duration", function(value, element) {
+        return this.optional(element) || /^[1-9]{1}[0-9]{0,2}$/.test(value);
+      }, "Course Duration should have only Num & Shouldn't start with 0.");
+
+
+
+      $.validator.addMethod("courseofferprice", function(value, element) {
+        return this.optional(element) || /^(\d{1,2})(,\d{2})*(,\d{1,3}){1}\.\d{2}?$/.test(value);
+      }, "Amount should not start with 0.");
+
+
+
+      $.validator.addMethod("branch", function(value, element) {
+        return this.optional(element) || /^\S[A-Za-z ]+$/.test(value);
+      }, "Name should only contain letters.");
+
+
+
+      $.validator.addMethod("prerequisite_s", function(value, element) {
+        return this.optional(element) || /^\S[A-Za-z0-9., ]{1,80}$/.test(value);
+      }, "Name should only contain letters and numbers.");
+
+
+
+      $.validator.addMethod("prerequisite_h", function(value, element) {
+        return this.optional(element) || /^\S[A-Za-z0-9., ]{1,80}$/.test(value);
+      }, "Name should only contain letters and numbers.");
+
+
+
+      $.validator.addMethod("short_description", function(value, element) {
+        return this.optional(element) || /^\S[A-Za-z0-9., ]{40,120}$/.test(value);
+      }, "Name should contains min 40 & max 120 characters only.");
+
+
+
+      $.validator.addMethod("long_description", function(value, element) {
+        return this.optional(element) || /^\S[A-Za-z0-9., ]{40,800}$/.test(value);
+      }, "Name should contains min 40 & max 800 characters only.");
+
+
+
+      $.validator.addMethod("alphanumeric", function (value, element) {
+         return this.optional(element) || /^[a-zA-Z ]+$/.test(value);
+      }, "Name should only contain letters.");
+
+      $.validator.addMethod("noNumbers", function (value, element) {
+         return this.optional(element) || !/\d/.test(value);
+      }, "Name should not contain numbers.");
+
+      $.validator.addMethod("noDoubleSpace", function (value, element) {
+          return this.optional(element) || !/\s{2}/.test(value);
+      }, "Name should not contain double spaces.");
+
+      $.validator.addMethod("noDoubleDot", function (value, element) {
+          return this.optional(element) || !/\.\./.test(value);
+      }, "Email should not contain double dots consecutively.");
+
+
+
+
+
+
+      $.validator.addMethod("noSpace", function (value, element) {
+         return this.optional(element) || !/\s/.test(value);
+      }, "Email should not contain spaces.");
+
+      $.validator.addMethod("atLeastOneCharBeforeAt", function (value, element) {
+          return this.optional(element) || /^[^@]+@/.test(value);
+      }, "Email should have at least one character before the '@' symbol.");
+
+      $.validator.addMethod("phoneNumber", function (value, element) {
+          return this.optional(element) || /^[6-9]\d{9}$/.test(value);
+      }, "Phone number should start with 6, 7, 8, or 9 and have a length of 10.");
+
+
+
+
+  $('#Customer_Form').validate({
+    rules: {
+      username: {
+       required: true,
+       noNumbers: true,
+       alphanumeric: true,
+       noDoubleSpace: true,
+      },
+      email: {
+      required: true,
+      noDoubleDot: true,
+      noSpace: true,
+      atLeastOneCharBeforeAt: true,
+      },
+      phone_number: {
+        required: true,
+        number: true,
+        phoneNumber: true,
+        minlength: 10,
+        maxlength: 10,
+      },
+      password: {
+         required: true,
+         minlength: 5,
+      },
+      confirm_password: {
+        required: true,
+        minlength: 5,
+      },
+     },
+    messages: {
+      username: {
+        required: 'Please enter your name',
+      },
+      digits: {
+         required: 'name only contains alphabets',
+      },
+      email: {
+         required: 'Please enter your email',
+      },
+      phone_number: {
+        required: 'Please enter your phone_number',
+        number: 'Please enter a valid phone_number',
+        minlength: 'phone_number must be 10 digits',
+        maxlength: 'phone_number must be 10 digits'
+      },
+      password: {
+         required: 'Please enter your password',
+      },
+      confirm_password: {
+         required: 'Please enter your confirm_password',
+      },
+    },
+  });
+});
+</script>
+
+
+    <script>
+    function checkPasswordMatch() {
+        var password = $("#txtNewPassword").val();
+        var confirmPassword = $("#txtConfirmPassword").val();
+        if (password != confirmPassword)
+            $("#CheckPasswordMatch").html("Passwords does not match!");
+        else
+            $("#CheckPasswordMatch").html("Passwords match.");
+    }
+    $(document).ready(function () {
+       $("#txtConfirmPassword").keyup(checkPasswordMatch);
+    });
+    </script>
+
+
+
+{% endblock%}

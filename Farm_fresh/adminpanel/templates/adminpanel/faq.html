@@ -1,0 +1,221 @@
+{% extends 'adminpanel/base.html' %}
+{% block content %}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Frequently Asked Questions</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">FAQ</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog"
+     tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Data</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <label class="col-form-label">Name</label>
+                    <input class="form-control" id="Name" name="Name" placeholder="Name" type="text">
+
+
+                    <div class="mb-3">
+                        <label class="col-form-label">Email</label>
+                        <input class="form-control" id="Email" name="Email" placeholder="Email"
+                               type="text">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- .Modal end-->
+<div class="modal fade" id="modal-lg">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fa fa-plus"></i>&nbsp;&nbsp;Edit Data</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="Name"></label>
+                        <input class="form-control" id="Name1" name="Name" placeholder="Name" type="text">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="Email"></label>
+                        <input class="form-control" id="Email1" name="Email" placeholder="Email"
+                               type="text">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal" type="submit">Close</button>
+                        <button class="btn btn-primary" type="submit">Add</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title"></h3>
+                        <button class="btn btn-secondary float-right" data-target="#exampleModal" data-toggle="modal"
+                                type="button">
+                            Add content
+                        </button>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body text-center">
+                        <table class="table table-bordered table-striped" id="example1">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                {% if faq1 %}
+                                {% for y in faq1 %}
+                                <td>{{ y.Name }}</td>
+                                <td>{{ y.Email }}</td>
+                                <td>
+                                   <a href="{% url 'faq2' y.id %}"><button class="badge badge-primary" data-target="#modal-lg" data-toggle="modal" type="button"><i class="fas fa-pen"></i></button></a>
+
+                                    <a href="{% url 'deletefaq' y.pk %}">
+                                        <button class="badge badge-danger"><i aria-hidden="true"
+                                                                              class="fa fa-trash"></i></button>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": false
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!--&lt;!&ndash;    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>&ndash;&gt;-->
+<!--    <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>-->
+<script>
+    $(function () {
+    $.validator.addMethod("alphanumeric", function (value, element) {
+        return this.optional(element) || /^[a-zA-Z ]+$/.test(value);
+      }, "Name should only contain letters and numbers.");
+      $.validator.addMethod("noNumbers", function (value, element) {
+        return this.optional(element) || !/\d/.test(value);
+      }, "Name should not contain numbers.");
+      $.validator.addMethod("noDoubleSpace", function (value, element) {
+        return this.optional(element) || !/\s{2}/.test(value);
+      }, "Name should not contain double spaces.");
+      $.validator.addMethod("noDoubleDot", function (value, element) {
+        return this.optional(element) || !/\.\./.test(value);
+      }, "Email should not contain double dots consecutively.");
+
+      $.validator.addMethod("noSpace", function (value, element) {
+        return this.optional(element) || !/\s/.test(value);
+      }, "Email should not contain spaces.");
+      $.validator.addMethod("atLeastOneCharBeforeAt", function (value, element) {
+        return this.optional(element) || /^[^@]+@/.test(value);
+      }, "Email should have at least one character before the '@' symbol.");
+      $.validator.addMethod("phoneNumber", function (value, element) {
+        return this.optional(element) || /^[6-9]\d{9}$/.test(value);
+      }, "Phone number should start with 6, 7, 8, or 9 and have a length of 10.");
+
+  $('#quickForm').validate({
+    rules: {
+      Name: {
+        required: true,
+        alphanumeric: true,
+        noNumbers: true,
+        noDoubleSpace:true,
+      },
+
+      Email: {
+        required: true,
+        email: true,
+        noDoubleDot: true,
+        noSpace: true,
+        atLeastOneCharBeforeAt:true,
+      },
+    },
+    messages: {
+       Name: {
+           minlength: "Your name must be at least 5 characters long",
+         },
+
+
+       email: {
+        required: "Please enter a email address",
+        email: "Please enter a valid email address"
+      },
+
+
+  })
+});
+
+</script>
+
+{% endblock %}

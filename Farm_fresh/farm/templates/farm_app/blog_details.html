@@ -1,0 +1,134 @@
+{% extends 'farm_app/base.html' %}
+{% block content %}
+<html class="no-js" lang="en">
+
+<!-- Mirrored from themebeyond.com/pre/ganic-prev/ganic-live/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 May 2023 08:56:06 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Ganic - Organic Food & Grocery Market Template</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+		<!-- CSS here -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <link rel="stylesheet" href="css/flaticon.css">
+        <link rel="stylesheet" href="css/aos.css">
+        <link rel="stylesheet" href="css/slick.css">
+        <link rel="stylesheet" href="css/default.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+    </head>
+    <body>
+
+
+
+		<!-- Scroll-top -->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <i class="fas fa-angle-up"></i>
+        </button>
+        <!-- Scroll-top-end-->
+        <main>
+
+            <!-- breadcrumb-area -->
+            <section class="breadcrumb-area breadcrumb-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadcrumb-content">
+                                <h2 class="title">latest news</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Our Blog</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-area-end -->
+
+            <!-- blog-area -->
+            <section class="blog-area blog-gray-bg">
+                <div class="container">
+                    <div class="container-inner-wrap">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8 col-md-10">
+                                <div class="standard-blog-item">
+                                    <div class="blog-thumb">
+                                        <a href="blog-details.html"><img src="../../static/img/blog/blog_thumb01.jpg" alt=""></a>
+                                    </div>
+                                    {% for x in blog1 %}
+                                        <div class="standard-blog-content">
+                                            <h4 class="title"><a href="blog-details.html">{{ x.Title }}</a>
+
+                                            </h4>
+                                            <ul class="standard-blog-meta">
+                                                <li><a href="#"><i class="far fa-user"></i>Rudhra</a></li>
+                                                <li><a href="#"><i class="far fa-calendar"></i>May 30, 2023</a></li>
+                                                <li><a href="#"><i class="far fa-comment-alt"></i>0 Comments</a></li>
+                                            </ul>
+                                            <p>{{ x.Description }}</p>
+                                            <div class="blog-line" data-background="../../static/img/blog/blog_item_line.png"></div>
+                                            <a href="blog-details.html" class="btn read-more">Read more</a>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+
+                                <div class="standard-blog-item">
+                                    <div class="blog-thumb">
+                                        <a href="{% url 'blog_detail' %}"><img src="../../static/img/blog/blog_thumb03.jpg" alt=""></a>
+                                    </div>
+                                    {% for x in blog1 %}
+                                    <div class="standard-blog-content">
+                                        <h4 class="title"><a href="{% url 'blog_detail' %}">{{ x.title }}</a></h4>
+                                        <ul class="standard-blog-meta">
+                                            <li><a href="{% url 'blog_detail' %}"><i class="far fa-user"></i>Rudhra</a></li>
+                                            <li><a href="{% url 'blog_detail' %}"><i class="far fa-calendar"></i>May 30, 2023</a></li>
+                                            <li><a href="{% url 'blog_detail' %}"><i class="far fa-comment-alt"></i>0 Comments</a></li>
+                                        </ul>
+                                        <p>{{ x.description }}</p>
+                                        <div class="{% url 'blog_detail' %}" data-background="img/blog/blog_item_line.png"></div>
+                                        <a href="{% url 'blog_detail' %}" class="btn read-more">Read more</a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- blog-area-end -->
+
+        </main>
+        <!-- main-area-end -->
+
+		<!-- JS here -->
+        <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/vendor/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/isotope.pkgd.min.js"></script>
+        <script src="js/imagesloaded.pkgd.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/jquery.countdown.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/slick.min.js"></script>
+        <script src="js/ajax-form.js"></script>
+        <script src="js/wow.min.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+
+<!-- Mirrored from themebeyond.com/pre/ganic-prev/ganic-live/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 May 2023 08:56:12 GMT -->
+</html>
+{% endblock %}

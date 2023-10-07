@@ -1,0 +1,168 @@
+{% extends 'adminpanel/base.html' %}
+{% block content %}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>About Us</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">About Us</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog"
+     tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Data</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <label class="col-form-label">Title</label>
+                    <input class="form-control" id="Title" name="Title" placeholder="Title" type="text">
+
+
+                    <div class="mb-3">
+                        <label class="col-form-label">Description</label>
+                        <input class="form-control" id="Description" name="Description" placeholder="Description"
+                               type="text">
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal" type="submit">Close</button>
+                        <button class="btn btn-primary" type="submit">Add</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- .Modal end-->
+<div class="modal fade" id="modal-lg">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!--            <div class="modal-header">-->
+            <!--                <h5 class="modal-title"><i class="fa fa-plus"></i>&nbsp;&nbsp;Edit Data</h5>-->
+            <!--                <button aria-label="Close" class="close" data-dismiss="modal" type="button">-->
+            <!--                    <span aria-hidden="true">&times;</span>-->
+            <!--                </button>-->
+            <!--            </div>-->
+
+            <div class="modal-body">
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="Title">Titel</label>
+                        <input class="form-control" id="Title1" name="Title" placeholder="Title" type="text">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="Description">Description</label>
+                        <input class="form-control" id="Description1" name="Description" placeholder="Description"
+                               type="text">
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal" type="submit">Close</button>
+                        <button class="btn btn-primary" type="submit">Add</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title"></h3>
+                        <button class="btn btn-secondary float-right" data-target="#exampleModal" data-toggle="modal"
+                                type="button">
+                            Add content
+                        </button>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body text-center">
+                        <table class="table table-bordered table-striped" id="example1">
+                            <thead>
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Action</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                {% if about1 %}
+                                {% for y in about1 %}
+                                <td>{{ y.Title }}</td>
+                                <td>{{ y.Description }}</td>
+                                <td>
+                                     <a href="{% url 'about2' y.id %}"><button class="badge badge-primary" data-target="#modal-lg" data-toggle="modal" type="button"><i class="fas fa-pen"></i></button></a>
+                                     <a href="{% url 'deleteabout' y.pk %}">
+                                        <button class="badge badge-danger"><i aria-hidden="true" class="fa fa-trash"></i></button>
+                                     </a>
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": false
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
+
+
+
+
+
+</script>
+
+{% endblock %}

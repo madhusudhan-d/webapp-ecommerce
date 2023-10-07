@@ -1,0 +1,39 @@
+{% extends 'farm_app/base.html' %}
+{% block content %}
+<body class="bg-Light">
+
+
+
+<div class="container my-5" >
+    <div class="row m-4 md-3">
+           <div class="row">
+              <h3 class="text-warning">Welcome:<span class="text-capitalize">{{ pro.username }}</span></h3>
+          </div>
+          </br><br><br><br>
+<!--                            <div class="down" style="margin-top:50px;margin-left: -100px;">-->
+          <div class="col-sm-2 border-end">
+              <ul class="list-unstyled">
+                  <li class="d-grid"><a href="{% url 'profile' %}" class="btn  btn" style="margin-top:50px;margin-left:-180px;border-radius:10px; font-size:11px;">Profile</a></li>
+                  <li class="d-grid"><a href="{% url 'address' %}" class="btn btn" style="margin-top:10px;margin-left:-180px;border-radius:10px; font-size:11px;">Address</a></li>
+              </ul>
+          </div>
+          {% for ad in profile %}
+               <div class="col-md-3">
+                    <div class="card text-bg-secondary mb-3" style="max-width: 20rem; margin-top:50px; ">
+                          <div class="card-header row justify-content-center" style="margin-left:1px;margin-right:1px;color:green;"><b>Address: {{ pro.id }}</b></div>
+                          <div class="card-body"style="font-size:80px;">
+                            <p class=card-text"><b>Name</b>: {{ad.name}}</p>
+                            <p class="card-text"><b>Address</b> : {{ad.address}}</p>
+                            <p class="card-text"><b>Phone Number</b> : {{ad.mobile}}</p>
+                              <p class="card-text"><b>State</b> : {{ad.state}}</p>
+                              <p class="card-text"><b>City </b>: {{ad.city}}</p>
+                               <p class="card-text"><b>Town</b> : {{ad.town}}</p>
+                              <p class="card-text"><b>Postal zip</b> : {{ad.zipcode}}</p>
+                            <p class="text-center"><a href="{% url 'update_address' ad.id %}" type="button" class="btn btn" style="border-radius:10px;">Update</a></p>
+                          </div>
+                    </div>
+                </div>
+          {% endfor %}
+    </div>
+</div>
+{% endblock%}

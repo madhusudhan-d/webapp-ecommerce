@@ -1,0 +1,229 @@
+{% extends 'adminpanel/base.html' %}
+{% block content %}
+<!-- Content Wrapper. Contains page content -->
+<!--  <div class="content-wrapper">-->
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Update Form</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Update Form</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <!--              <div class="card-header">-->
+                    <!--                <h3 class="card-title">Quick Example</h3>-->
+                    <!--              </div>-->
+                    <!-- /.card-header -->
+                    <!-- form start --->
+                    <form action="" id="updateform" method="POST">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="Employee_id">Employee Id</label>
+                                <input class="form-control" id="Employee_id" name="Employee_id"
+                                       placeholder="Employee id" type="text" value="{{update.Employee_id}}">
+                            </div>
+                            <div class="form-group ">
+                                <label>Employee Name</label>
+                                <input class="form-control" name="Employee_name" placeholder="Employee Name"
+                                       type="text" value="{{update.Employee_name}}">
+                            </div>
+                            <!--                            </div>-->
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input class="form-control" name="Phone_Number" placeholder="Phone number"
+                                       type="text"
+                                       value="{{update.Phone_Number}}">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input class="form-control" name="Email" placeholder="Email"
+                                       type="text"
+                                       value="{{update.Email}}">
+                            </div>
+                            <div class="form-group ">
+                                <label>Designation</label>
+                                <input class="form-control" name="Designation" placeholder="Employee Name"
+                                       type="text" value="{{ update.Designation }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Departments <b style="color: red;">*</b></label>
+                                <select class="form-control select2" value="{{ update.department }}" style="width: 100%;background-color: #F8F8FF;">
+                                    {% for x in update %}
+                                    <option>Production</option
+>
+                                    <option>CRM</option>
+                                    <option>HRM</option>
+                                    <option>WebContent</option>
+                                    <option>Marketing &promotions</option>
+                                    <option>Others</option>
+
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--  </div>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+<script>
+$(document).ready(function() {
+
+      $.validator.setDefaults({
+
+        submitHandler: function () {
+
+          form.submit();
+
+        }
+
+      });
+      //additional jquery methods
+      $.validator.addMethod("alphanumeric", function (value, element) {
+        return this.optional(element) ||  /^[a-zA-Z ]+$/.test(value);
+      }, "Name should only contain letters and numbers.");
+
+
+
+      $.validator.addMethod("noNumbers", function (value, element) {
+        return this.optional(element) || !/\d/.test(value);
+      }, "Name should not contain numbers.");
+
+
+
+      $.validator.addMethod("noDoubleSpace", function (value, element) {
+        return this.optional(element) || !/\s{2}/.test(value);
+      }, "Name should not contain double spaces.");
+
+
+      $.validator.addMethod("duration", function(value, element) {
+        return this.optional(element) || /^[1-9]{1}[0-9]{0,2}$/.test(value);
+      }, "Course Duration should have only Num & Shouldn't start with 0.");
+
+
+      $.validator.addMethod("alphanumeric", function (value, element) {
+         return this.optional(element) || /^[a-zA-Z ]+$/.test(value);
+      }, "Name should only contain letters.");
+
+      $.validator.addMethod("noNumbers", function (value, element) {
+         return this.optional(element) || !/\d/.test(value);
+      }, "Name should not contain numbers.");
+
+      $.validator.addMethod("noDoubleSpace", function (value, element) {
+          return this.optional(element) || !/\s{2}/.test(value);
+      }, "Name should not contain double spaces.");
+
+      $.validator.addMethod("noDoubleDot", function (value, element) {
+          return this.optional(element) || !/\.\./.test(value);
+      }, "Email should not contain double dots consecutively.");
+      $.validator.addMethod("Email", function (value, element) {
+        return this.optional(element) ||  /^[\w.%+-]+@[\w.-]+\.[A-Za-z]{2,}$/.test(value);
+      }, "Email should only contain letters and numbers and  character.");
+
+      $.validator.addMethod("phoneNumber", function (value, element) {
+          return this.optional(element) || /^[6-9]\d{9}$/.test(value);
+      }, "Phone number should start with 6, 7, 8, or 9 and have a length of 10.");
+      $.validator.addMethod("Employee_id", function(value, element) {
+        return this.optional(element) || /^\d{9}$/.test(value);
+      }, "Employee id should contain numbers.");
+      $.validator.addMethod("department", function (value, element) {
+          return this.optional(element) || /^[A-Za-z\s\-&.,()]*$/.test(value);
+      }, "department should contain letters.");
+      $.validator.addMethod("designation", function (value, element) {
+          return this.optional(element) || /^[A-Za-z\s\-&.,()]*$/.test(value);
+      }, "designation should contain letters.");
+
+
+
+
+
+
+  $('#updateform').validate({
+    rules: {
+      Employee_id: {
+       required: true,
+<!--       Employee_id: true,-->
+      },
+      Employee_name: {
+         required: true,
+
+
+      },
+      Phone_Number: {
+        required: true,
+        number: true,
+        phoneNumber: true,
+        minlength: 10,
+        maxlength: 10,
+      },
+
+      Email: {
+         required: true,
+         Email: true,
+
+      },
+
+      Designation: {
+         required: true,
+         designation: true,
+      },
+      department: {
+         required: true,
+         department: true,
+      },
+
+    },
+    messages: {
+      Employee_id: {
+        required: '*Please enter your Employee_id',
+      },
+      Employee_name: {
+         required: '*Please enter your Employee_name',
+      },
+      Phone_Number: {
+         required: '*Please enter your phone number',
+      },
+      Email: {
+         required: '*Please enter your Email',
+      },
+      Designation: {
+         required: '*Please enter your Designation',
+      },
+      department: {
+         required: '*Please enter your Department',
+      },
+    },
+  });
+});
+
+
+</script>
+
+{% endblock %}

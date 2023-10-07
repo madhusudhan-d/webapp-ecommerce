@@ -1,0 +1,88 @@
+{% extends 'farm_app/base.html' %}
+{% block content %}
+
+
+
+
+		<!-- Scroll-top -->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <i class="fas fa-angle-up"></i>
+        </button>
+        <!-- Scroll-top-end-->
+        <main>
+
+            <!-- breadcrumb-area -->
+            <section class="breadcrumb-area breadcrumb-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadcrumb-content">
+                                <h2 class="title">latest news</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Our Blog</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-area-end -->
+
+
+
+            <!-- blog-area -->
+            <section class="blog-area blog-gray-bg">
+                <div class="container">
+                    <div class="container-inner-wrap">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8 col-md-10">
+                                <div class="standard-blog-item">
+                                    <div class="blog-thumb">
+                                        <a href="{% url 'blog_detail' %}"><img src="../../static/img/blog/blog_thumb01.jpg" alt=""></a>
+                                    </div>
+                                    <div class="standard-blog-content">
+                                        <h4 class="title"><a href="blog-details.html">Providing Professional or Expert Advice</a>
+                                        </h4>
+                                        <ul class="standard-blog-meta">
+                                            <li><a href="#"><i class="far fa-user"></i>Rudhra</a></li>
+                                            <li><a href="#"><i class="far fa-calendar"></i>May 30, 2023</a></li>
+                                            <li><a href="#"><i class="far fa-comment-alt"></i>0 Comments</a></li>
+                                        </ul>
+                                        <p>Consulting is defined as the practise of provi third party with etise on matter in exchang for a fee. The service may
+                                        involve either advisory or ientation services. For the consultan taking an independ practise defined.</p>
+                                        <div class="blog-line" data-background="../../static/img/blog/blog_item_line.png"></div>
+                                        <a href="blog-details.html" class="btn read-more">Read more</a>
+                                    </div>
+                                </div>
+
+                                <div class="standard-blog-item">
+                                    <div class="blog-thumb">
+                                        <a href="blog-details.html"><img src="../../static/img/blog/blog_thumb03.jpg" alt=""></a>
+                                    </div>
+                                    <div class="standard-blog-content">
+                                        <h4 class="title"><a href="blog-details.html">Organization and Time Management</a></h4>
+                                        <ul class="standard-blog-meta">
+                                            <li><a href="#"><i class="far fa-user"></i>Rudhra</a></li>
+                                            <li><a href="#"><i class="far fa-calendar"></i>May 30, 2023</a></li>
+                                            <li><a href="#"><i class="far fa-comment-alt"></i>0 Comments</a></li>
+                                        </ul>
+                                        <p>Consulting is defined as the practise of provi third party with etise on matter in exchang for a fee. The service may
+                                        involve either advisory or ientation services. For the consultan taking an independ practise defined.</p>
+                                        <div class="blog-line" data-background="img/blog/blog_item_line.png"></div>
+                                        <a href="blog-details.html" class="btn read-more">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- blog-area-end -->
+
+        </main>
+        <!-- main-area-end -->
+
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'adminpanel/base.html' %}
+{% block content %}
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Cancel Orders Table</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Cancel Orders Table</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <div class="row-5">
+      <div class="col-sm-12">
+        <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Cancel Order List</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead class="bg-primary">
+                  <tr>
+                    <th>S.No</th>
+                    <th>Order Id</th>
+                    <th>Customer Id</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Order Received Date</th>
+                    <th>Payment Status</th>
+                    <th>Shipping Status</th>
+                    <th>Order</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>987
+                    </td>
+                    <td>23556</td>
+                    <td>Milk</td>
+                    <td>85</td>
+                    <td>Absf@gmail.com</td>
+                    <td>Mumbai</td>
+                    <td>25/04/2023</td>
+                    <td><button type="button" class="badge badge-danger">Unpaid</button></td>
+                    <td><a><button type="button" class="badge badge-secondary">Processing</button></a></td>
+                    <td><button type="button" class="badge badge-danger">Cancel</button></td>
+
+                    <td><a href="{% url 'updatecancel' %}"><button class="badge badge-primary"><i class="fa fa-pen" aria-hidden="true"></i></button></a>
+                        <a href=""><button class="badge badge-danger"><i class="fa fa-trash" aria-hidden="true"></i></button></a>
+                    </td>
+                  </tr>
+
+                  </tbody>
+
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+<!-- ./wrapper -->
+
+
+<!-- jQuery -->
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": true, "autoWidth": false,
+
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+{% endblock %}

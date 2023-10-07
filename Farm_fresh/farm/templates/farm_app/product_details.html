@@ -1,0 +1,104 @@
+{% extends 'farm_app/base.html' %}
+
+{% block content %}
+
+
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+        <!-- main-area -->
+        <main>
+            <!-- shop-details-area -->
+            <section class="shop-details-area pt-90 pb-90">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="shop-details-flex-wrap">
+                                <div class="shop-details-img-wrap">
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="item-one" role="tabpanel" aria-labelledby="item-one-tab">
+                                            <div class="shop-details-img">
+                                                <img src="{{ product.product_image.url }}" alt="" class="image col-xs-6 col-sm-12 col-lg-6 mt-3 text-sm-center w-100 h-75">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="shop-details-content">
+                                <h4 class="title" style="font-family: Georgia; font-size: 50px;">{{ product.title }}</h4>
+                                <div class="shop-details-meta">
+                                    <ul>
+                                        <li>Category: {{ product.category }}<a href="#"></a></li>
+                                        <li class="shop-details-review">
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span>Review</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="shop-details-price">
+                                    <h2 class="price">Rs.{{ product.discounted_price }}/-</h2>
+                                    <h5 class="stock-status">- IN Stock</h5>
+                                </div>
+                                <p>{{ product.description }}</p>
+                                <div class="shop-details-list">
+                                    <ul>
+                                        <li>Type : <span>{{ product.title }}</span></li>
+                                        <li>CO : <span>Rudra</span></li>
+                                    </ul>
+                                </div>
+                                <div class="shop-perched-info">
+                                    <div class="sd-cart-wrap">
+                                        <form action="#">
+                                            <div class="cart-plus-minus">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <form action="/add-to-cart" class="d-inline">
+                                        <input type="hidden" name="prod_id" value="{{product.id}}">
+                                        <button type="submit" class="btn btn">Add to cart</button>
+                                    </form>
+
+                                </div>
+                                <div class="shop-details-bottom">
+                                    <form action="/add-to-wishlist" class="d-inline">
+                                        <input type="hidden" name="prod_id" value="{{product.id}}">
+                                        <h5 class="title"><a href="{% url 'add-to-wishlist' %}"><i class="far fa-heart"></i> Add To Wishlist</a></h5>
+                                    </form>
+                                    <ul>
+<!--                                        <li>-->
+<!--                                            <span>Tag : </span>-->
+<!--                                            <a href="#">Milk</a>-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            <span>CATEGORIES :</span>-->
+<!--                                            <a href="#">x</a>-->
+<!--                                            <a href="#">x,</a>-->
+<!--                                            <a href="#">x,</a>-->
+<!--                                            <a href="#">x</a>-->
+<!--                                        </li>-->
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<!-- main-area-end -->
+
+
+
+
+
+{% endblock %}

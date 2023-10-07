@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE | Log in</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../static/plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="../../static/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../static/dist/css/adminlte.min.css">
+    <!-- Option 1: Include in HTML -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+</head>
+
+<style>
+    .error{
+    color: red;
+    }
+</style>
+
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#"><b>Admin Login</b></a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+
+
+
+      <form action="#"  id="Customer_Form" novalidate="novalidate">
+
+<!--        <div class="input-group mb-3">-->
+           <div class="col-auto">
+               <label class="visually-hidden" for="email">Email</label>
+          <div class="input-group">
+              <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+              <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
+           </div>
+           </div>
+
+<!--          <div class="input-group-append">-->
+<!--            <div class="input-group-text">-->
+<!--              <span class="fas fa-envelope"></span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="input-group mb-3">-->
+          <br>
+          <input type="password" class="form-control" placeholder="Password" name="password">
+<!--          <label id="password" class="error" for="password">*Please enter your username</label>-->
+<!--          <div class="input-group-append">-->
+<!--            <div class="input-group-text">-->
+<!--              <span class="fas fa-lock"></span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+          <br>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="exampleCheck1">
+              <label for="exampleCheck1">
+                Remember Me
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary"><a href="{% url 'dashboard' %}"  style="color: white; font-size:20px;">Sign In</a></button>
+            <hr>
+<!--            <a href="{% url 'dashboard' %}" class="btn btn-primary">Sign In</a>-->
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+      <p class="mb-1">
+        <a href="{% url 'recover_password' %}">I forgot my password</a>
+      </p>
+<!--      <p class="mb-0">-->
+<!--        <a href="#" class="text-center">Register a new membership</a>-->
+<!--      </p>-->
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+
+<!-- Bootstrap 4 -->
+<script src="../../static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../static/dist/js/adminlte.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+<script>
+
+$(document).ready(function() {
+
+      $.validator.setDefaults({
+
+        submitHandler: function () {
+
+          form.submit();
+
+        }
+
+      });
+      //additional jquery methods
+      $.validator.addMethod("alphanumeric", function (value, element) {
+        return this.optional(element) ||  /^[a-zA-Z ]+$/.test(value);
+      }, "Name should only contain letters and numbers.");
+
+
+
+      $.validator.addMethod("noNumbers", function (value, element) {
+        return this.optional(element) || !/\d/.test(value);
+      }, "Name should not contain numbers.");
+
+
+
+      $.validator.addMethod("noDoubleSpace", function (value, element) {
+        return this.optional(element) || !/\s{2}/.test(value);
+      }, "Name should not contain double spaces.");
+
+
+
+      $.validator.addMethod("coursefee", function(value, element) {
+        return this.optional(element) || /^(\d{1,2})(,\d{2})*(,\d{1,3}){1}\.\d{2}?$/.test(value);
+      }, "Amount should not start with 0.");
+
+
+
+      $.validator.addMethod("duration", function(value, element) {
+        return this.optional(element) || /^[1-9]{1}[0-9]{0,2}$/.test(value);
+      }, "Course Duration should have only Num & Shouldn't start with 0.");
+
+
+
+      $.validator.addMethod("courseofferprice", function(value, element) {
+        return this.optional(element) || /^(\d{1,2})(,\d{2})*(,\d{1,3}){1}\.\d{2}?$/.test(value);
+      }, "Amount should not start with 0.");
+
+
+
+      $.validator.addMethod("branch", function(value, element) {
+        return this.optional(element) || /^\S[A-Za-z ]+$/.test(value);
+      }, "Name should only contain letters.");
+
+
+
+      $.validator.addMethod("prerequisite_s", function(value, element) {
+        return this.optional(element) || /^\S[A-Za-z0-9., ]{1,80}$/.test(value);
+      }, "Name should only contain letters and numbers.");
+
+
+
+      $.validator.addMethod("prerequisite_h", function(value, element) {
+        return this.optional(element) || /^\S[A-Za-z0-9., ]{1,80}$/.test(value);
+      }, "Name should only contain letters and numbers.");
+
+
+
+      $.validator.addMethod("short_description", function(value, element) {
+        return this.optional(element) || /^\S[A-Za-z0-9., ]{40,120}$/.test(value);
+      }, "Name should contains min 40 & max 120 characters only.");
+
+
+
+      $.validator.addMethod("long_description", function(value, element) {
+        return this.optional(element) || /^\S[A-Za-z0-9., ]{40,800}$/.test(value);
+      }, "Name should contains min 40 & max 800 characters only.");
+
+
+      $.validator.addMethod("alphanumeric", function (value, element) {
+         return this.optional(element) || /^[a-zA-Z ]+$/.test(value);
+      }, "Name should only contain letters.");
+
+      $.validator.addMethod("noNumbers", function (value, element) {
+         return this.optional(element) || !/\d/.test(value);
+      }, "Name should not contain numbers.");
+
+      $.validator.addMethod("noDoubleSpace", function (value, element) {
+          return this.optional(element) || !/\s{2}/.test(value);
+      }, "Name should not contain double spaces.");
+
+      $.validator.addMethod("noDoubleDot", function (value, element) {
+          return this.optional(element) || !/\.\./.test(value);
+      }, "Email should not contain double dots consecutively.");
+
+
+      $.validator.addMethod("noSpace", function (value, element) {
+         return this.optional(element) || !/\s/.test(value);
+      }, "Email should not contain spaces.");
+
+      $.validator.addMethod("atLeastOneCharBeforeAt", function (value, element) {
+          return this.optional(element) || /^[^@]+@/.test(value);
+      }, "Email should have at least one character before the '@' symbol.");
+
+      $.validator.addMethod("phoneNumber", function (value, element) {
+          return this.optional(element) || /^[6-9]\d{9}$/.test(value);
+      }, "Phone number should start with 6, 7, 8, or 9 and have a length of 10.");
+
+
+  $('#Customer_Form').validate({
+    rules: {
+      username: {
+       required: true,
+       noNumbers: true,
+       alphanumeric: true,
+      },
+      email: {
+      required: true,
+      noDoubleDot: true,
+      noSpace: true,
+      atLeastOneCharBeforeAt: true,
+      },
+      phone_number: {
+        required: true,
+        number: true,
+        phoneNumber: true,
+        minlength: 10,
+        maxlength: 10,
+      },
+      password: {
+         required: true,
+      },
+      confirm_password: {
+        required: true,
+      },
+     },
+    messages: {
+      username: {
+        required: 'Please enter your name',
+      },
+      digits: {
+         required: 'name only contains alphabets',
+      },
+      email: {
+         required: 'Please enter your email',
+      },
+      phone_number: {
+        required: 'Please enter your phone_number',
+        number: 'Please enter a valid phone_number',
+        minlength: 'phone_number must be 10 digits',
+        maxlength: 'phone_number must be 10 digits'
+      },
+      password: {
+         required: 'Please enter your password',
+      },
+      confirm_password: {
+         required: 'Please enter your confirm_password',
+      },
+    },
+  });
+});
+
+</script>
+
+</body>
+</html>

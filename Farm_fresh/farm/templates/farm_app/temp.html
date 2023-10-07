@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FAQ Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .faq {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .question {
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      color: #555;
+      display: none;
+      margin-bottom: 20px;
+    }
+  </style>
+  <script>
+    function toggleAnswer(index) {
+      var answer = document.getElementById("answer" + index);
+      if (answer.style.display === "none") {
+        answer.style.display = "block";
+      } else {
+        answer.style.display = "none";
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Frequently Asked Questions</h1>
+  <div class="faq">
+    <div class="question" onclick="toggleAnswer(1)">Question 1: How do I place an order?</div>
+    <div class="answer" id="answer1">
+      Placing an order is easy! Simply follow these steps:
+      <ul>
+        <li>Step 1: Browse our online store and select the desired products.</li>
+        <li>Step 2: Add the items to your shopping cart by clicking the "Add to Cart" button.</li>
+        <li>Step 3: Review your cart and click "Proceed to Checkout" to initiate the order process.</li>
+        <li>Step 4: Provide the necessary shipping and billing information.</li>
+        <li>Step 5: Choose your preferred payment method and complete the transaction.</li>
+        <li>Step 6: Once the order is successfully placed, you will receive an email confirmation.</li>
+      </ul>
+    </div>
+
+    <div class="question" onclick="toggleAnswer(2)">Question 2: What payment methods do you accept?</div>
+    <div class="answer" id="answer2">
+      We accept various payment methods, including:
+      <ul>
+        <li>Credit and debit cards (Visa, Mastercard, American Express, etc.)</li>
+        <li>PayPal</li>
+        <li>Bank transfers (available in select regions)</li>
+        <li>Digital wallets (such as Apple Pay, Google Pay, etc.)</li>
+      </ul>
+    </div>
+
+    <div class="question" onclick="toggleAnswer(3)">Question 3: How can I track my order?</div>
+    <div class="answer" id="answer3">
+      Once your order has been shipped, you will receive a tracking number via email. You can use this tracking number to monitor the progress of your shipment by visiting the carrier's website or using their tracking system. Alternatively, you can log in to your account on our website and check the order status.
+    </div>
+
+    <!-- Add more questions and answers as needed -->
+
+  </div>
+</body>
+</html>

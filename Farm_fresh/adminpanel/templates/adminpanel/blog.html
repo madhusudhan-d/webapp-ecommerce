@@ -1,0 +1,136 @@
+{% extends 'adminpanel/base.html' %}
+{% block content %}
+
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Blog Content</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Blog</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="col-form-label" for="Title">Title</label>
+          <input class="form-control" id="Title" type="text" placeholder="Title">
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="Description">Description</label>
+          <input class="form-control" id="Description" type="text" placeholder="Description">
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="Published At">Published At</label>
+          <input class="form-control" id="Published At" type="text" placeholder="Published At">
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="Published By">Published By</label>
+          <input class="form-control" id="Published By" type="text" placeholder="Published By">
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- .Modalend-->
+
+   <section class="content">
+     <div class="container-fluid">
+       <div class="row">
+         <div class="col-12">
+           <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title"></h3>
+                <button type="button" class="btn btn-secondary float-right" data-toggle="modal" data-target="#exampleModal">
+                  Add content
+                </button>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Published At</th>
+                    <th>Published By</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Milk</td>
+                    <td>Hi people</td>
+                    <td>10/09/1999</td>
+                    <td>Suma</td>
+                  </tr>
+                  <tr>
+                    <td>Cow</td>
+                    <td>Hello friends</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+         </div>
+       </div>
+     </div>
+   </section>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+{% endblock %}

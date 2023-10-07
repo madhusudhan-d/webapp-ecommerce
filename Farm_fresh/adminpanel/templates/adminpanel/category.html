@@ -1,0 +1,117 @@
+{% extends 'adminpanel/base.html' %}
+{% block content %}
+
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Category Table</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Category</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+            {{ form.as_p }}
+<!--            <div class="form-group">-->
+<!--              <label for="name">Category Name</label>-->
+<!--              <input type="text" class="form-control" name="name" id="name" placeholder="Enter Category Name">-->
+<!--            </div>-->
+
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- .Modalend-->
+
+   <section class="content">
+     <div class="container-fluid">
+       <div class="row">
+         <div class="col-12">
+           <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title"></h3>
+                <button type="button" class="btn btn-secondary float-right" data-toggle="modal" data-target="#exampleModal">
+                  Add Category
+                </button>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th align="center">ID</th>
+                    <th align="center">Category Name</th>
+                      <th align="cen">Icon</th>
+                    <th align="center">Status</th>
+                    <th align="center">Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for category in cate %}
+                  <tr>
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                      <td>{{ category.icon }}</td>
+                    <td>Active</td>
+                    <td align="center">
+<!--                      <a href="#"><button class="badge badge-primary"><i class="fas fa-pen" aria-hidden="true"></i></button></a>-->
+                      <a href="{% url 'delete_category' category.pk %}"><button class="badge badge-danger"><i class="fas fa-trash" aria-hidden="true"></i></button></a>
+                    </td>
+                    {% endfor %}
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+         </div>
+       </div>
+     </div>
+   </section>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": false
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+{% endblock %}

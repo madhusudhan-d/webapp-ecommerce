@@ -1,0 +1,80 @@
+{% extends 'farm_app/base.html' %}  
+{% block content %} 
+
+<head>
+     <!-- Bootstrap icons CDNS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+    <body>
+
+
+
+		<!-- Scroll-top -->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <i class="fas fa-angle-up"></i>
+        </button>
+        <!-- Scroll-top-end-->
+
+        <!-- header-area -->
+
+            <!-- main-area -->
+        <main>
+
+            <!-- cart-area -->
+            <div class="cart-area pt-90 pb-90">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-10" style="margin-right:25px;">
+                            <div class="cart-wrapper">
+
+                             <div class="card-header" style="margin-top:-14px;margin-left:-30px;margin-right:-30px;">
+                                    <h3 style="color: orange;text-align: center;"><b>My Wishlist</b></h3>
+                             </div>
+
+                                
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th class="product-thumbnail"></th>
+                                                <th class="product-name">Product</th>
+                                                <th class="product-price">Price</th>
+                                                <th class="product-price">Remove</th>
+                                                <th class="product-price">Buy Now</th>
+                                                <th class="product-delete"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="product-thumbnail"><a href="{% url 'p_details' %}"><img src="../../static/img/product/l_milk3.png" alt="" ></i></span></a></td>
+                                                <td class="product-name">
+                                                    <h4><a href="{% url 'p_details' %}">Buffalo Milk</a></h4>
+                                                </td>
+                                                <td class="product-price">₹90.00/l</td>
+                                                <td class="product-delete"><a href="#"><button class="btn" style="border-radius: 15px;"><i class="far fa-trash-alt" style="font-size: 16px;"></i> REMOVE</button></a></td>
+                                                <td><a href="{% url 'add_cart' %}"><button class="btn btn-primary"style="border-radius: 15px;"><i class="bi bi-cart" style="font-size: 19px;"></i> BY NOW</button></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-thumbnail"><a href="{% url 'p_details' %}"><img src="../../static/img/product/p_ghee1.png" alt=""></a></td>
+                                                <td class="product-name">
+                                                    <h4><a href="{% url 'p_details' %}">Pure Ghee</a></h4>
+                                                </td>
+                                                <td class="product-price">₹150.00/kg</td>
+                                                <td class="product-delete"><a href="#"><button class="btn" style="border-radius: 15px;"><i class="far fa-trash-alt" style="font-size: 16px;"></i> REMOVE</button></a></td>
+                                                <td><a href="{% url 'add_cart' %}"><button class="btn btn-primary"style="border-radius: 15px;"><i class="bi bi-cart" style="font-size: 19px;"></i> BY NOW</button></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- cart-area-end -->
+        </main>
+        <!-- main-area-end -->
+        
+
+{% endblock %}
+

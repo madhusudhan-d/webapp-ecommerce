@@ -1,0 +1,204 @@
+{% extends 'adminpanel/base.html' %}
+{% block content %}
+
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>New Orders</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">Orders List</li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- popup model-->
+
+        <!-- Main content -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <!-- /.card -->
+
+                        <div class="card">
+                            <div class="card-header bg-primary" style="height:40px;">
+                                <h1 class="card-title"></h1>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                              <table id="example1" class="table table-bordered table-striped">
+                                      <thead>
+                                      <tr>
+
+                                        <th>OrderId</th>
+                                        <th>CustomerId</th>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Phone</th>
+                                        <th>Address</th>
+                                        <th>Order Status</th>
+                                        <th>Action</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody align="center">
+                                        {% for a in orders %}
+                                            <tr>
+                                                <td>{{ a.id }}</td>
+                                                <td>{{ a.customer_id }}</td>
+                                                <td>{{ a.product.title }}</td>
+                                                <td>{{ a.product.selling_price }}</td>
+                                                <td>{{ a.customer.mobile }}</td>
+                                                <td>{{ a.customer.address }}</td>
+                                                <td>{{ a.status }}</td>
+                                                <td>
+                                                  <button type="button" class="badge btn-primary" value="{{ a.id }}" data-toggle="modal" data-target="#modal-lg"><i class="fa fa-eye" aria-hidden="true"></i></button>
+
+
+                                                    <!-- popup model-->
+                                                    <div class="modal fade" id="modal-lg">
+                                                      <div class="modal-dialog" >
+                                                        <div class="modal-content">
+                                                          <div class="modal-header">
+                                                              <h4 class="modal-title"><b>&nbsp;&nbsp;Order List</b></h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                              <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                          </div>
+
+                                                          <div class="modal-body">
+                                                            <table  class="table table-bordered table-striped">
+                                                                <thead>
+<!--                                                                {% for a in orders %}-->
+                                                                    <tr>
+                                                                        <th>Order Id</th>
+                                                                        <td>{{ a.id }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>CustomerId</th>
+                                                                        <td>{{ a.customer_id }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Product</th>
+                                                                        <td>{{ a.product.title }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Category</th>
+                                                                        <td>{{ a.product.category.cat_name }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Quantity</th>
+                                                                        <td>{{ a.quantity }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Price</th>
+                                                                        <td>{{ a.product.selling_price }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Phone</th>
+                                                                        <td>{{ a.customer.mobile }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Email</th>
+                                                                        <td>{{ a.username.email }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Address</th>
+                                                                        <td>{{ a.customer.address }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>ORD</th>
+                                                                        <td>{{ a.ordered_date }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Payment Status</th>
+                                                                        <td>{{ a.payment.payment_status }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Shipping Status</th>
+                                                                        <td>{{ a.Shipping }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Order Status</th>
+                                                                        <td>{{ a.status }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Order update Date</th>
+                                                                        <td>{{ a.order_updated_date }}</td>
+                                                                    </tr>
+<!--                                                                {% endfor %}-->
+                                                                </thead>
+                                                            </table>
+                                                              <div align="right">
+                                                                <button type="submit" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                                              </div>
+
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <!--/popup model End-->
+                                                    <a href="{% url 'updateorderlist' a.pk %}"><button class="badge btn-primary"><i class="fa fa-pen" aria-hidden="true"></i></button></a>
+
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+                                      </tbody>
+
+                                   </table>
+                            </div>
+<!--                             /.card-body-->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-block">
+
+        </div>
+        <strong>Copyright &copy; 2023 <a href="https://adminlte.io">Rudra Farm Fresh</a>.</strong> All rights reserved.
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#modal-lg').on('shown.bs.modal', function() {
+      // Additional JavaScript code to execute when the modal is shown
+    });
+
+    $('#modal-lg').on('hidden.bs.modal', function() {
+      // Additional JavaScript code to execute when the modal is hidden
+    });
+  });
+</script>
+
+
+{% endblock %}

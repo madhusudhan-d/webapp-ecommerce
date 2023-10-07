@@ -1,0 +1,135 @@
+{% extends 'adminpanel/base.html' %}
+{% block content %}
+
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Add Product</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Add Product</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Add Product</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <form action="#" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+<!--           <div class="row">-->
+<!--              <div class="col-md-6">-->
+
+<!--                <div class="form-group">-->
+<!--                  <label>Product Title</label>-->
+<!--                  {{ form.title }}-->
+<!--&lt;!&ndash;                  <input type="text" class="form-control" placeholder="Enter Product Title...">&ndash;&gt;-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /.form-group &ndash;&gt;-->
+<!--                <div class="form-group">-->
+<!--                  <label>Selling Price</label>-->
+<!--                  {{ form.selling_price }}-->
+<!--&lt;!&ndash;                  <input type="text" class="form-control" placeholder="Enter Selling Price...">&ndash;&gt;-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /.form-group &ndash;&gt;-->
+<!--              </div>-->
+<!--              &lt;!&ndash; /.col &ndash;&gt;-->
+<!--              <div class="col-md-6">-->
+<!--                <div class="form-group">-->
+<!--                  <label>Description</label>-->
+<!--                  {{ form.description }}-->
+<!--&lt;!&ndash;                  <input type="text" class="form-control" placeholder="Enter Product Description...">&ndash;&gt;-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /.form-group &ndash;&gt;-->
+<!--                <div class="form-group">-->
+<!--                  <label>Composition</label>-->
+<!--                  {{ form.composition }}-->
+<!--&lt;!&ndash;                  <input type="text" class="form-control" placeholder="Enter Product Composition...">&ndash;&gt;-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /.form-group &ndash;&gt;-->
+<!--              </div>-->
+<!--              &lt;!&ndash; /.col &ndash;&gt;-->
+<!--            </div>-->
+<!--            &lt;!&ndash; /.row &ndash;&gt;-->
+
+<!--            <div class="row">-->
+<!--              <div class="col-12 col-sm-6">-->
+<!--                <div class="form-group">-->
+<!--                  <label>Discounted Price</label>-->
+<!--                  {{ form.discounted_price }}-->
+<!--&lt;!&ndash;                  <input type="text" class="form-control" placeholder="Enter Discounted Price...">&ndash;&gt;-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /.form-group &ndash;&gt;-->
+<!--              </div>-->
+
+<!--              <div class="col-12 col-sm-6">-->
+<!--                <div class="form-group">-->
+<!--                  <label>Category</label>-->
+<!--                  {{ form.category }}-->
+<!--&lt;!&ndash;                  <select class="form-control" data-dropdown-css-class="select2-danger" style="width: 100%;">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <option selected="selected">Milk</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <option>Curd</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <option>Milkshake</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <option>Panner</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <option>Ghee</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <option>Ice Bars</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <option>Sweets</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </select>&ndash;&gt;-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /.form-group &ndash;&gt;-->
+<!--              </div>-->
+
+<!--              &lt;!&ndash; /.col &ndash;&gt;-->
+<!--              <div class="col-12 col-sm-6">-->
+<!--                <div class="form-group">-->
+<!--                  <label>Product Image</label>-->
+<!--                  <div class="custom-file">-->
+<!--&lt;!&ndash;                      <input type="file" class="custom-file-input" id="customFile">&ndash;&gt;-->
+<!--                      <label class="custom-file-label">Choose file</label>-->
+<!--                       {{ form.product_image }}-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /.form-group &ndash;&gt;-->
+<!--              </div>-->
+<!--              &lt;!&ndash; /.col &ndash;&gt;-->
+<!--            </div>-->
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <!-- /.row -->
+            </form>
+          </div>
+
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+    </section>
+
+
+        <script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+
+</script>
+
+{% endblock %}

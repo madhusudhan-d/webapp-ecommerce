@@ -1,0 +1,65 @@
+{% extends 'farm_app/base.html' %}
+{% block content %}
+
+
+
+        <main>
+
+
+
+            <!-- ingredients-area -->
+            <!-- ingredients-area -->
+            <section class="ingredients-area pt-100 pb-90">
+                <div class="container">
+                    <div class="ingredients-inner-wrap">
+                        <div class="row align-items-center">
+                            <div class="col-7">
+                                <div class="ingredients-img">
+                                    <img src="../../static/img/images/ingredients_img.jpg" alt="">
+<!--                                    <div class="active-years">-->
+<!--                                        <h2 class="title">49+ <span>Years</span></h2>-->
+<!--                                    </div>-->
+                                </div>
+                            </div>
+                             <div class="col-5">
+                                <div class="ingredients-content-wrap">
+                                    <div class="ingredients-section-title">
+                                         {% for i in about %}
+                                            <span class="sub-title"></span>
+                                            <h2 class="title"><b>{{ i.Title }}</b></h2>
+                                    </div>
+                                            <p>{{ i.Description }}</p>
+                                            <div class="ingredients-fact">
+                                         {% endfor %}
+                                        <ul>
+<!--                                            <li>-->
+<!--                                                <div class="icon"><img src="../../static/img/icon/ing_icon01.png" alt=""></div>-->
+<!--                                                <div class="content">-->
+<!--                                                    <h4>128+</h4>-->
+<!--                                                    <span>Awards Winner</span>-->
+<!--                                                </div>-->
+<!--                                            </li>-->
+<!--                                            <li>-->
+<!--                                                <div class="icon"><img src="../../static/img/icon/ing_icon02.png" alt=""></div>-->
+<!--                                                <div class="content">-->
+<!--                                                    <h4>35k+</h4>-->
+<!--                                                    <span>Active Volunteers</span>-->
+<!--                                                </div>-->
+<!--                                            </li>-->
+                                        </ul>
+                                    </div>
+<!--                                    <div class="ingredients-btn-wrap">-->
+<!--                                        <a href="shop.html" class="btn">Shop now</a>-->
+<!--                                        <a href="index.html" class="store-link">our Super Store <i class="fas fa-arrow-right"></i></a>-->
+<!--                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
+
+{% endblock %}
